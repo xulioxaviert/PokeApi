@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+
+body {
+  margin: 0;
+  padding: 0;
+  min-width: 500px;
+  border-color: #d4a001;
+}
+
+.banner {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.banner > img {
+  width: 100%;
+}
+
+.img_center {
+  display: flex;
+  width: 100%;
+}
+
+.img_center > img {
+  width: 100%;
+}
+
+.title > h1 {
+  font-family: "Lobster", cursive;
+  padding: 0;
+  margin: 0;
+  font-size: 100px;
+}
+
+.title {
+  background-color: #d4a001;
+  margin: 0;
+  padding: 50px 10px 50px 10px;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: space-around;
+  background-color: #d4a001;
+  padding: 0 10px;
+}
+
+.pokemon_card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
+  height: 100%;
+  border: white 8px groove;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.pokemon_card:hover {
+  box-shadow: 0 25px 25px 0 rgba(0, 0, 0, 0.5);
+}
+
+.pokemon_card > img {
+  border: 1px solid black;
+  width: 100%;
+  background-image: url(./img/background_card.jpg);
+}
+
+.pokemon_card > p {
+  font-family: "VT323", monospace;
+  margin: 0;
+  padding: 0;
+  font-size: 200%;
+}
+
+.pokemon_card > h2 {
+  font-family: "Indie Flower", cursive;
+  padding: 0 15px;
+  text-transform: uppercase;
+  font-size: 200%;
+}
+
+@media (max-width: 600px) {
+  .title > h1 {
+    font-size: 50px;
+  }
+}
