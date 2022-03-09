@@ -4,11 +4,11 @@ window.onload = () => {
 
 const pokeArray = [];
 
-let banner = document.createElement("div");
+/* let banner = document.createElement("div");
 banner.className = "banner";
 banner.innerHTML = `<img src="./img/banner.jpg"/>`;
 document.body.appendChild(banner);
-
+ */
 let newHDivImg = document.createElement("div");
 newHDivImg.className = "img_center"
 newHDivImg.innerHTML = `<img src="./img/pokemon.jpg" alt ="img_center"/>`;
@@ -48,5 +48,7 @@ function printPokemons(pokeArray) {
   }
   document.body.appendChild(newDivContainer);
 }
+
+
 
 
