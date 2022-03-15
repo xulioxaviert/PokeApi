@@ -1,5 +1,7 @@
 window.onload = () => {
   init();
+  //const input$$ = document.querySelector("#input");
+  // input$$.addEventListener("input", () => pokemonSearch());
   // preloader();
 };
 
@@ -35,9 +37,9 @@ const init = async () => {
 const printPokemons = (pokeArray) => {
   const newDivContainer = document.createElement("div");
   newDivContainer.className = "container";
-  let newH2 = document.createElement('h2')
-  newH2.className = "container";
-  newH2.textContent = 'Listado de Pokemons';
+  let newH2 = document.createElement("h2");
+  newH2.className = "container-subtitle";
+  newH2.textContent = "Listado de Pokemons";
   document.body.appendChild(newH2);
 
   for (const i of pokeArray) {
@@ -91,24 +93,33 @@ const printPokemons = (pokeArray) => {
 // }
 
 const pokemonSearch = () => {
-  const newDivContainer = document.createElement("div");
- newDivContainer.className = "container";
   let pokemonSearch = document.getElementById("input").value;
-  console.log(pokemonSearch);
+  const newDivContainer = document.createElement("div");
+  newDivContainer.innerHTML = `<h2 class="subtitle">Pokemon Encontrado</h2>`;
+  
+
+  //console.log(pokemonSearch);
   const url = "http://pokeapi.co/api/v2/pokemon/" + pokemonSearch.toLowerCase();
   fetch(url)
     .then((res) => res.json())
     .then((myRes) => {
-      
-      let var1 = document.querySelector("#pokemonSearch");
-      var1.innerHTML = `<div class="pokemon_card"> <img src=${myRes.sprites.other["official-artwork"]["front_default"]}
+      let input = document.querySelector("#pokemonSearch");
+      input.innerHTML = `
+      <div class="title"> <h2 class="subtitle">Pokemon Encontrado</h2></div>
+      <div class="pokemon_card"> 
+           <img src=${myRes.sprites.other["official-artwork"]["front_default"]}
            alt =${myRes.name}/>
            <h2 class="subtitle">${myRes.name}</h2>
            <p> Peso: ${myRes.weight} Kgr </p>
            <p> Altura: ${myRes.height} M</p>
            </div>`;
-
       
-      document.body.appendChild(newDivContainer);
+      
+      // const newDivContainer = document.createElement("div");
+      // newDivContainer.className = "container";
+      // let newH2 = document.createElement("h2");
+      // newH2.className = "container-subtitle";
+      // newH2.textContent = "Pokemon encontrado";
+      // input.parentNode.insertBefore(newH2, input);
     });
 };

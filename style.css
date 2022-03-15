@@ -2,8 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Staatliches&display=swap");
 
 body {
   margin: 0;
@@ -25,21 +24,19 @@ body {
 .img_center {
   display: flex;
   width: 100%;
-
-
 }
 
 .img_center > img {
   width: 100%;
 }
 
-.title > h1 {
-  font-family: 'Staatliches', cursive;
+.title > h2 {
+  font-family: "Staatliches", cursive;
   font-family: "Lobster", cursive;
   padding: 0;
   margin: 0;
-  font-size: 100px;
-  color: #BA4A00;
+  /* font-size: 100px; */
+  color: #ba4a00;
 }
 
 .title {
@@ -100,11 +97,10 @@ body {
   font-family: "Indie Flower", cursive;
   padding: 0 15px;
   text-transform: uppercase;
-  font-size: 200%;
 }
 
-@media (max-width: 600px) {
-  .title > h1 {
+@media (width: 400px) {
+  .title > h2 {
     font-size: 50px;
   }
 
@@ -114,4 +110,65 @@ body {
   .container {
     width: auto;
   }
+}
+
+.container-subtitle {
+  background-color: #d4a001;
+  font-family: "Lobster", cursive;
+  padding: 0;
+  margin: 0;
+  font-size: 60px;
+  color: #ba4a00;
+  @media (width: 400px) {
+    .title > h2 {
+      font-size: 25px;
+    }
+  }
+}
+
+.subtitle-search {
+  font-family: "Lobster", cursive;
+  padding: 0;
+  margin: 0;
+  font-size: 60px;
+  color: #ba4a00;
+}
+
+#pokemonSearch {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+#pokemonSearch h2 {
+  font-size: 35px;
+}
+
+.inputTitle {
+  display: flex;
+  justify-content: center;
+  background-color: #d4a001;
+}
+
+#input {
+  border-radius: 2px;
+  width: 65%;
+  padding: 8px;
+  margin: 0 5px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+#input:focus {
+  background-color: #f6e58d;
+}
+
+ .btn {
+  border-radius: 5px;
+  width: 10%;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+ .btn:hover {
+  background-color: #f9ca24;
 }
