@@ -3,6 +3,7 @@ window.onload = () => {
   //const input$$ = document.querySelector("#input");
   // input$$.addEventListener("input", () => pokemonSearch());
   // preloader();
+  
 };
 
 let pokeArray = [];
@@ -26,7 +27,7 @@ let pokeArray = [];
 // };
 
 const init = async () => {
-  const pokemonData = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=5");
+  const pokemonData = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=51");
   const dataJson = await pokemonData.json();
   pokeArray = dataJson.results;
 
@@ -39,6 +40,7 @@ const init = async () => {
 
 
 const printPokemons = (pokeArray) => {
+  
   const newDivContainer = document.createElement("div");
   newDivContainer.className = "container";
   let newH2 = document.createElement("h2");
@@ -98,6 +100,7 @@ const printPokemons = (pokeArray) => {
 // }
 
 const pokemonSearch = () => {
+  console.log(pokeArray);
   let pokemonSearch = document.getElementById("input").value;
   const newDivContainer = document.createElement("div");
   newDivContainer.innerHTML = `<h2 class="subtitle">Pokemon Encontrado</h2>`;
