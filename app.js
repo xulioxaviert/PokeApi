@@ -1,54 +1,114 @@
 window.onload = () => {
   init();
+  // preloader();
 };
 
-const pokeArray = [];
+let pokeArray = [];
 
-/* let banner = document.createElement("div");
-banner.className = "banner";
-banner.innerHTML = `<img src="./img/banner.jpg"/>`;
-document.body.appendChild(banner);
- */
-let newHDivImg = document.createElement("div");
-newHDivImg.className = "img_center"
-newHDivImg.innerHTML = `<img src="./img/pokemon.jpg" alt ="img_center"/>`;
-document.body.appendChild(newHDivImg);
+// let newDiv = document.createElement("div");
+// newDiv.className = "title";
+// newDiv.innerHTML = `<h2>Listado de Pokemons</h2>
+// <input type="text" id ="input" placeholder="Pokemon's name" value="bulbasaur">
+// <input type="button" name="input" value="Send" onclick="pokemonSearch()" ></input>
+// <div id="pokemonsFiltered"  >
+// <h2>Listado de Pokemons filtrados</h2>
+// </div>
+// `;
+// document.body.appendChild(newDiv);
 
-let newDiv = document.createElement("div");
-newDiv.className = "title";
-newDiv.innerHTML = `<h1>Listado de Pokemons</h1>`;
-document.body.appendChild(newDiv);
+// const preloader = () => {
+//   const preloaderPokemon = document.createElement("div");
+//   preloaderPokemon.innerHTML = `<div class="preloader">
+//     <img src="./img/pikachu.gif" /></div>`;
+//   document.body.appendChild(preloaderPokemon);
+// };
 
 const init = async () => {
-  for (let i = 1; i < 51; i++) {
-    const pokemonData = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`);
-    const dataJson = await pokemonData.json();
-
-    pokeArray.push(dataJson.name);
-    pokeArray.push(dataJson.sprites.other.home.front_default);
-    pokeArray.push(dataJson.weight);
-    pokeArray.push(dataJson.height);
-  }
+  const pokemonData = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=5");
+  const dataJson = await pokemonData.json();
+  pokeArray = dataJson.results;
 
   //console.log(pokeArray);
   printPokemons(pokeArray);
 };
 
-function printPokemons(pokeArray) {
+const printPokemons = (pokeArray) => {
   const newDivContainer = document.createElement("div");
   newDivContainer.className = "container";
+  let newH2 = document.createElement('h2')
+  newH2.className = "container";
+  newH2.textContent = 'Listado de Pokemons';
+  document.body.appendChild(newH2);
 
-  for (let i = 0; i < pokeArray.length; i += 4) {
-    newDivContainer.innerHTML += `<div class="pokemon_card">
-    <img src=${pokeArray[i + 1]} alt =${pokeArray[i]}/>
-    <h2 class="subtitle">${pokeArray[i]}</h2>
-      <p> Peso: ${pokeArray[i + 2]} Kgr </p>
-      <p> Altura: ${pokeArray[i + 3]} M</p>
-      </div>`;
+  for (const i of pokeArray) {
+    fetch(i.url)
+      .then((res) => res.json())
+      .then((myRes) => {
+        newDivContainer.innerHTML += `<div class="pokemon_card">
+        <img src=${myRes.sprites.other["official-artwork"]["front_default"]} 
+        alt =${myRes.name}/>
+        <h2 class="subtitle">${myRes.name}</h2>
+        <p> Peso: ${myRes.weight} Kgr </p>
+        <p> Altura: ${myRes.height} M</p>
+        </div>`;
+      });
+    document.body.appendChild(newDivContainer);
   }
-  document.body.appendChild(newDivContainer);
-}
+};
 
+//******* RECORRIDO DE LOS DATOS DENTRO DE UN OBJETO JSON**********
+// const printPokemons = (pokeArray) => {
+//   const newDivContainer = document.createElement("div");
+//   newDivContainer.className = "container";
 
+//   for (const var2 of pokeArray) {
+//     console.log("el nombre del pokemon es: " + var2.name + " y su url:" + var2.url);
+//     fetch(var2.url).then((res) => res.json()).then((myRes) => {
+//       console.log("pre:" + myRes);
+//       console.log("1er for: " + myRes.sprites.front_default);
+//       console.log("imagen: " + myRes.sprites.other['official-artwork']['front_default'])
+//       console.log(myRes.base_experience);
 
+//       for (const var1 of myRes.abilities) {
+//         console.log("2do for:" + var1.ability.name);
+//         console.log("2do for:" + var1.ability.url);
+//         console.log("2do for:" + var1.is_hidden);
+//         console.log("2do for:" + var1.slot);
+//          }
+//     })
+//   }
+// };
 
+//   for (let i = 0; i < pokeArray.length; i += 4) {
+//     newDivContainer.innerHTML += `<div class="pokemon_card">
+//     <img src=${pokeArray[i + 1]} alt =${pokeArray[i]}/>
+//     <h2 class="subtitle">${pokeArray[i]}</h2>
+//       <p> Peso: ${pokeArray[i + 2]} Kgr </p>
+//       <p> Altura: ${pokeArray[i + 3]} M</p>
+//       </div>`;
+//   }
+//   document.body.appendChild(newDivContainer);
+// }
+
+const pokemonSearch = () => {
+  const newDivContainer = document.createElement("div");
+ newDivContainer.className = "container";
+  let pokemonSearch = document.getElementById("input").value;
+  console.log(pokemonSearch);
+  const url = "http://pokeapi.co/api/v2/pokemon/" + pokemonSearch.toLowerCase();
+  fetch(url)
+    .then((res) => res.json())
+    .then((myRes) => {
+      
+      let var1 = document.querySelector("#pokemonSearch");
+      var1.innerHTML = `<div class="pokemon_card"> <img src=${myRes.sprites.other["official-artwork"]["front_default"]}
+           alt =${myRes.name}/>
+           <h2 class="subtitle">${myRes.name}</h2>
+           <p> Peso: ${myRes.weight} Kgr </p>
+           <p> Altura: ${myRes.height} M</p>
+           </div>`;
+
+      
+      document.body.appendChild(newDivContainer);
+    });
+};

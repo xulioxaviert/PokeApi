@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +9,24 @@
     <script src="./app.js" defer></script>
     <title>Document</title>
 </head>
+
 <body>
-    
+
+    <div class="img_center">
+        <img src="./img/pokemon.jpg" alt="img_center">
+    </div>
+
+    <div class="title">
+        <input type="text" id="input" placeholder="Pokemon's name" value="BULBASAUR">
+        <input type="button" name="input" value="Send" onclick="pokemonSearch()"></input>
+
+    </div>
+    <div class="title">
+        <h2> Pokemon Encontrado</h2>
+    </div>
+    <div id="pokemonSearch" class="container">
+    </div>
+
 </body>
+
 </html>
