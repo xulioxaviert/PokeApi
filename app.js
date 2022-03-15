@@ -26,7 +26,7 @@ let pokeArray = [];
 // };
 
 const init = async () => {
-  const pokemonData = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=5");
+  const pokemonData = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=151");
   const dataJson = await pokemonData.json();
   pokeArray = dataJson.results;
 
