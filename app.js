@@ -57,8 +57,8 @@ const printPokemons = (pokeArray) => {
         <img src=${myRes.sprites.other["official-artwork"]["front_default"]} 
         alt =${myRes.name}/>
         <h2 class="subtitle">${myRes.name}</h2>
-        <p> Peso: ${myRes.weight} Kgr </p>
-        <p> Altura: ${myRes.height} M</p>
+        <p> Peso: ${myRes.weight/10} Kgr </p>
+        <p> Altura: ${myRes.height/10} M</p>
         </div>`;
       });
     document.body.appendChild(newDivContainer);
@@ -120,8 +120,8 @@ const pokemonSearch = () => {
            <img src=${myRes.sprites.other["official-artwork"]["front_default"]}
            alt =${myRes.name}/>
            <h2 class="subtitle">${myRes.name}</h2>
-           <p> Peso: ${myRes.weight} Kgr </p>
-           <p> Altura: ${myRes.height} M</p>
+           <p> Peso: ${myRes.weight/10} Kgr </p>
+           <p> Altura: ${myRes.height/10} M</p>
            </div>`;
       
       
