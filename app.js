@@ -3,7 +3,6 @@ window.onload = () => {
   //const input$$ = document.querySelector("#input");
   // input$$.addEventListener("input", () => pokemonSearch());
   // preloader();
-  
 };
 
 let pokeArray = [];
@@ -27,25 +26,21 @@ let pokeArray = [];
 // };
 
 const init = async () => {
-  const pokemonData = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=51");
+  const pokemonData = await fetch(
+    "https://pokeapi.co/api/v2/pokemon/?limit=51"
+  );
   const dataJson = await pokemonData.json();
   pokeArray = dataJson.results;
 
-  
   printPokemons(pokeArray);
-  
 };
 
-
-
-
 const printPokemons = (pokeArray) => {
-  
   const newDivContainer = document.createElement("div");
   newDivContainer.className = "container";
   let newH2 = document.createElement("h2");
   newH2.className = "container-subtitle";
-  newH2.textContent = "Listado de Pokemons";
+  //newH2.textContent = "Listado de Pokemons";
   document.body.appendChild(newH2);
 
   for (const i of pokeArray) {
@@ -54,11 +49,11 @@ const printPokemons = (pokeArray) => {
       .then((myRes) => {
         //console.log(myRes);
         newDivContainer.innerHTML += `<div class="pokemon_card">
-        <img src=${myRes.sprites.other["official-artwork"]["front_default"]} 
+        <img src=${myRes.sprites.other.home.front_default} 
         alt =${myRes.name}/>
         <h2 class="subtitle">${myRes.name}</h2>
-        <p> Peso: ${myRes.weight/10} Kgr </p>
-        <p> Altura: ${myRes.height/10} M</p>
+        <p> Peso: ${myRes.weight / 10} Kgr </p>
+        <p> Altura: ${myRes.height / 10} M</p>
         </div>`;
       });
     document.body.appendChild(newDivContainer);
@@ -99,50 +94,59 @@ const printPokemons = (pokeArray) => {
 //   document.body.appendChild(newDivContainer);
 // }
 
+function pressEnter(e) {
+  if (e.keyCode === 13 && !e.shiftKey) {
+    e.preventDefault();
+    //var boton = document.getElementById("boton");
+    let boton = document.getElementById("boton").click();
+  }
+}
+
 const pokemonSearch = () => {
   console.log(pokeArray);
   let pokemonSearch = document.getElementById("input").value;
   const newDivContainer = document.createElement("div");
   newDivContainer.innerHTML = `<h2 class="subtitle">Pokemon Encontrado</h2>`;
-  
-//Buscamos cualquier pokemon de la api
+
+  //Buscamos cualquier pokemon de la api
   //console.log(pokemonSearch);
-  const url = "https://pokeapi.co/api/v2/pokemon/" + pokemonSearch.toLowerCase();
+  const url =
+    "https://pokeapi.co/api/v2/pokemon/" + pokemonSearch.toLowerCase();
+  
+ 
   fetch(url)
     .then((res) => res.json())
     .then((myRes) => {
-      
       console.log(myRes);
       let input = document.querySelector("#pokemonSearch");
       input.innerHTML = `
-      <div class="title"> <h2 class="subtitle">Pokemon Encontrado</h2></div>
-      <div class="pokemon_card"> 
-           <img src=${myRes.sprites.other["official-artwork"]["front_default"]}
-           alt =${myRes.name}/>
-           <h2 class="subtitle">${myRes.name}</h2>
-           <p> Peso: ${myRes.weight/10} Kgr </p>
-           <p> Altura: ${myRes.height/10} M</p>
-           </div>`;
-      
-      
+    <div class="title"> <h2 class="subtitle">Pokemon Encontrado</h2></div>
+    <div class="pokemon_card"> 
+    <img src=${myRes.sprites.other.home.front_default}
+    alt =${myRes.name}/>
+    <h2 class="subtitle">${myRes.name}</h2>
+    <p> Peso: ${myRes.weight / 10} Kgr </p>
+    <p> Altura: ${myRes.height / 10} M</p>
+    </div>`;
+
       // const newDivContainer = document.createElement("div");
       // newDivContainer.className = "container";
       // let newH2 = document.createElement("h2");
       // newH2.className = "container-subtitle";
       // newH2.textContent = "Pokemon encontrado";
       // input.parentNode.insertBefore(newH2, input);
+    })
+      
+    .catch(error => {
+      console.log("No encontrado")
+    let input = document.querySelector("#pokemonSearch");
+      input.innerHTML = `
+    <div class="title"> <h2 class="subtitle">Pokemon no encontrado</h2></div>`;
+    
     });
-
-  
-
-
 
 };
 
-
-
-
-
-
-
+    
+  
 

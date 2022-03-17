@@ -17,12 +17,12 @@
     </div>
 
     <div class="inputTitle">
-        <input type="text" id="input" placeholder="Pokemon's name" >
-        <input type="button" class="btn" name="input" value="Search!" onclick="pokemonSearch()" ></input>
+        <input type="text" id="input" placeholder="Pokemon's name" onkeypress="pressEnter(event)">
+        <input id="boton" type="button" class="btn" name="input" value="Search!" onclick="pokemonSearch()"  ></input>
     </div>
 
     <div >
-        <div id="pokemonSearch" class="container"></div>
+        <div id="pokemonSearch" class="containerSearch"></div>
     </div>
 </body>
 
