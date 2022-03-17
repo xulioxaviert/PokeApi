@@ -107,7 +107,7 @@ const pokemonSearch = () => {
   
 //Buscamos cualquier pokemon de la api
   //console.log(pokemonSearch);
-  const url = "http://pokeapi.co/api/v2/pokemon/" + pokemonSearch.toLowerCase();
+  const url = "https://pokeapi.co/api/v2/pokemon/" + pokemonSearch.toLowerCase();
   fetch(url)
     .then((res) => res.json())
     .then((myRes) => {
